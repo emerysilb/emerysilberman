@@ -1,0 +1,80 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	heroImage?: string;
+}
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+	<article class="blog-post container my-xl">
+		{heroImage && <img src={heroImage} alt="" class="hero-image" />}
+		<div class="post-header">
+			<div class="date">
+				{pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+				{updatedDate && <span class="last-updated"> (Updated on {updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })})</span>}
+			</div>
+			<h1>{title}</h1>
+			<p class="description mt-lg">{description}</p>
+			<hr />
+		</div>
+		<div class="post-content mt-lg">
+			<slot />
+		</div>
+	</article>
+</BaseLayout>
+
+<style>
+	.blog-post {
+		max-width: 800px;
+	}
+	.hero-image {
+		width: 100%;
+		border-radius: var(--radius-lg);
+		margin-bottom: var(--space-lg);
+		border: 1px solid var(--color-stone);
+	}
+	.post-header {
+		text-align: center;
+		margin-bottom: var(--space-xl);
+	}
+	.date {
+		color: var(--color-text-muted);
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-size: 0.875rem;
+		margin-bottom: var(--space-sm);
+	}
+	.description {
+		font-size: 1.25rem;
+		color: var(--color-text-muted);
+		font-style: italic;
+	}
+	hr {
+		border: 0;
+		border-top: 1px solid var(--color-stone);
+		margin: var(--space-xl) auto;
+		width: 50px;
+	}
+	.post-content :global(h2) {
+		margin-top: var(--space-xl);
+		margin-bottom: var(--space-md);
+	}
+	.post-content :global(p) {
+		margin-bottom: var(--space-md);
+	}
+	.post-content :global(ul) {
+		margin-bottom: var(--space-md);
+		padding-left: var(--space-lg);
+	}
+	.post-content :global(li) {
+		margin-bottom: var(--space-sm);
+	}
+</style>

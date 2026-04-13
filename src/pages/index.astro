@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Emery Silberman — Technologist & Ag-Tech Specialist">
+	<section class="container hero my-xl">
+		<div class="hero-content">
+			<h1>Technologist, Photographer, & Ag-Tech Specialist.</h1>
+			<p class="mt-lg">I'm Emery Silberman, a technologist bridging the gap between high-resolution satellite imagery and boots-on-the-ground agriculture. I currently serve as a Research Software Engineer at UC Merced, while previously serving as the CTO at Bowles Farming Company.</p>
+			<div class="mt-lg">
+				<a href="/projects" class="button">View My Work</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="container my-xl">
+		<h2 class="text-center">Featured Projects</h2>
+		<div class="projects-grid mt-lg">
+			<div class="card project-card">
+				<h3>GOES Viewer</h3>
+				<p>A mobile application for real-time viewing and sharing of NOAA satellite imagery.</p>
+				<a href="https://apps.apple.com" target="_blank" class="mt-lg block-link">View App &rarr;</a>
+			</div>
+			<div class="card project-card">
+				<h3>Immibridge</h3>
+				<p>An open-source tool for syncing Apple Photo libraries with the Immich self-hosted photo management system.</p>
+				<a href="https://github.com/emerysilberman" target="_blank" class="mt-lg block-link">GitHub Repo &rarr;</a>
+			</div>
+			<div class="card project-card">
+				<h3>Ag-Management Tools</h3>
+				<p>Custom Flutter applications developed for Bowles Farming to manage 11,000 acres of production in real-time.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="container my-xl photography-teaser">
+		<div class="card photography-card text-center">
+			<h2>Photography</h2>
+			<p>Capturing the intersection of nature, agriculture, and technology through the lens.</p>
+			<a href="/photography" class="button mt-lg">View Gallery</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.hero h1 {
+		font-size: clamp(2.5rem, 8vw, 4rem);
+		line-height: 1.1;
+		max-width: 14ch;
+	}
+	.hero p {
+		font-size: 1.25rem;
+		color: var(--color-text-muted);
+		max-width: 60ch;
+	}
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--space-lg);
+	}
+	.project-card h3 {
+		margin-bottom: var(--space-sm);
+	}
+	.project-card p {
+		color: var(--color-text-muted);
+	}
+	.block-link {
+		display: block;
+		font-weight: 600;
+		color: var(--color-green-primary);
+	}
+	.photography-card {
+		padding: var(--space-xl);
+		background-color: var(--color-green-pale);
+		border-color: transparent;
+	}
+</style>

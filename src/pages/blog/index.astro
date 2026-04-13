@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="Blog — Emery Silberman" description="Notes on Ag-Tech, Satellite Imagery, and Software Development.">
+	<section class="container my-xl">
+		<h1 class="text-center">Blog</h1>
+		<p class="text-center mt-lg">Notes on the intersection of agriculture and technology.</p>
+		
+		<div class="posts-list mt-xl">
+			{posts.map((post) => (
+				<article class="post-card card mb-lg">
+					<div class="post-meta">
+						<time datetime={post.data.pubDate.toISOString()}>
+							{post.data.pubDate.toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</time>
+					</div>
+					<h2 class="mt-sm"><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+					<p class="mt-sm text-muted">{post.data.description}</p>
+					<div class="mt-md">
+						<a href={`/blog/${post.slug}`} class="read-more">Read More &rarr;</a>
+					</div>
+				</article>
+			))}
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.posts-list {
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.post-card {
+		margin-bottom: var(--space-lg);
+	}
+	.post-meta {
+		font-size: 0.875rem;
+		color: var(--color-text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	.read-more {
+		font-weight: 600;
+		color: var(--color-green-primary);
+	}
+	.text-muted {
+		color: var(--color-text-muted);
+	}
+	.mb-lg { margin-bottom: var(--space-lg); }
+</style>

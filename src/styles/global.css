@@ -1,0 +1,102 @@
+:root {
+  /* Color Palette - Soft Earth Tones */
+  --color-bg: #f8f5f0; /* Oatmeal */
+  --color-surface: #ffffff;
+  --color-text: #2d2d2a; /* Charcoal */
+  --color-text-muted: #555550; /* Darker for accessibility */
+  
+  --color-green-primary: #3d5a45; /* Forest Green */
+  --color-green-soft: #8ca68e; /* Moss Green */
+  --color-green-pale: #e4ece4;
+  
+  --color-stone: #d9d4cc;
+  
+  /* Soft Rounding */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-unit: 1rem;
+  --space-sm: calc(0.5 * var(--space-unit));
+  --space-md: var(--space-unit);
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(4 * var(--space-unit));
+
+  /* Transitions */
+  --transition-soft: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  
+  /* Grain Overlay */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-green-primary);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-soft);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-green-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-soft);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-green-soft);
+  box-shadow: 0 4px 12px rgba(61, 90, 69, 0.15);
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-stone);
+  transition: var(--transition-soft);
+}
+
+.card:hover {
+  border-color: var(--color-green-soft);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.my-xl { margin-top: var(--space-xl); margin-bottom: var(--space-xl); }
+.mt-lg { margin-top: var(--space-lg); }

@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Projects — Emery Silberman">
+	<section class="container my-xl">
+		<h1>Selected Projects</h1>
+		<p class="lead mt-lg">A range of technical solutions at the intersection of agriculture, remote sensing, and software engineering.</p>
+
+		<div class="projects-grid mt-xl">
+			<div class="card project-card">
+				<div class="tag">Mobile App</div>
+				<h3>GOES Viewer</h3>
+				<p>A mobile application for real-time viewing and sharing of NOAA satellite imagery. Built to provide farmers and meteorologists with instant access to high-resolution weather data.</p>
+				<div class="links mt-lg">
+					<a href="https://apps.apple.com" target="_blank" class="block-link">App Store &rarr;</a>
+				</div>
+			</div>
+
+			<div class="card project-card">
+				<div class="tag">Open Source</div>
+				<h3>Immibridge</h3>
+				<p>An open-source synchronization tool for Apple Photo libraries and Immich. Solves the gap in self-hosted photo management for Mac users.</p>
+				<div class="links mt-lg">
+					<a href="https://github.com/emerysilberman" target="_blank" class="block-link">GitHub &rarr;</a>
+				</div>
+			</div>
+
+			<div class="card project-card">
+				<div class="tag">Ag-Tech</div>
+				<h3>Smart Farm Integration</h3>
+				<p>At UC Merced, I lead the software engineering for the experimental smart farm, integrating diverse sensor networks with cloud-based visualization tools.</p>
+			</div>
+
+			<div class="card project-card">
+				<div class="tag">Enterprise</div>
+				<h3>Bowles Management Suite</h3>
+				<p>A custom ecosystem of Flutter applications used to manage 11,000 acres. Features include real-time labor tracking, harvest logistics, and irrigation management.</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.lead {
+		font-size: 1.25rem;
+		color: var(--color-text-muted);
+		max-width: 60ch;
+	}
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: var(--space-lg);
+	}
+	.project-card {
+		display: flex;
+		flex-direction: column;
+	}
+	.project-card h3 {
+		margin: var(--space-sm) 0;
+	}
+	.project-card p {
+		color: var(--color-text-muted);
+		flex-grow: 1;
+	}
+	.tag {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--color-green-soft);
+		letter-spacing: 0.05em;
+	}
+	.block-link {
+		font-weight: 600;
+		color: var(--color-green-primary);
+	}
+</style>

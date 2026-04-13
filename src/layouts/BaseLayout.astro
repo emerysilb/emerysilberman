@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Emery Silberman — Technologist, Photographer, & Ag-Tech Innovator" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="container">
+			<nav class="nav">
+				<a href="/" class="logo">Emery Silberman</a>
+				<div class="nav-links">
+					<a href="/projects">Projects</a>
+					<a href="/ag-tech">Ag-Tech</a>
+					<a href="/blog">Blog</a>
+					<a href="/photography">Photography</a>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="container footer">
+			<p>&copy; {new Date().getFullYear()} Emery Silberman</p>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: var(--space-lg) 0;
+	}
+	.logo {
+		font-weight: 800;
+		font-size: 1.25rem;
+		color: var(--color-green-primary);
+	}
+	.nav-links {
+		display: flex;
+		gap: var(--space-lg);
+	}
+	@media (max-width: 600px) {
+		.nav {
+			flex-direction: column;
+			gap: var(--space-md);
+			text-align: center;
+		}
+		.nav-links {
+			gap: var(--space-md);
+			font-size: 0.9rem;
+		}
+	}
+	.nav-links a {
+		font-weight: 500;
+		color: var(--color-text-muted);
+	}
+	.nav-links a:hover {
+		color: var(--color-green-primary);
+	}
+	.footer {
+		padding: var(--space-xl) 0;
+		text-align: center;
+		color: var(--color-text-muted);
+		font-size: 0.875rem;
+	}
+</style>
